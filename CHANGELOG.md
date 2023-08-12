@@ -5,3 +5,9 @@
 - Finalized initial design document drafts.
 
 # v0.1.0-item-repository
+- Added ItemRepository.java class.
+- Added Item.java class.
+- Added InvalidArgException.java class.
+- Added Constants.java class.
+- Added member functions for repository.
+- Added error handling for repository.
