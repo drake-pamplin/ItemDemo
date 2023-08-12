@@ -3,3 +3,5 @@
 - Added app diagram.
 - Initialized Gradle application.
 - Finalized initial design document drafts.
+
+# v0.1.0-item-repository
