@@ -16,6 +16,8 @@
 - Added ItemService.java class.
 - Added member methods that interface with the item repository.
 
-# v0.3.0-help service
+# v0.3.0-help-service
 - Added HelpService.java class.
 - Added help text to constants.
+
+# v0.4.0-controller
