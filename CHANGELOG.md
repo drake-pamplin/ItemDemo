@@ -2,3 +2,4 @@
 - Added tech design.
 - Added app diagram.
 - Initialized Gradle application.
+- Finalized initial design document drafts.
