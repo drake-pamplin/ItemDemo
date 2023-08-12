@@ -11,3 +11,5 @@
 - Added Constants.java class.
 - Added member functions for repository.
 - Added error handling for repository.
+
+# v0.2.0-item-service
