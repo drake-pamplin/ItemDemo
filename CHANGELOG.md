@@ -21,3 +21,6 @@
 - Added help text to constants.
 
 # v0.4.0-controller
+- Added ItemController.java class.
+- Added member methods to the controller class.
+- Added error handling and output.
