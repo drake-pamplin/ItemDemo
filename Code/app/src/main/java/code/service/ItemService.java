@@ -14,17 +14,8 @@ public class ItemService {
 
     // Add member to key.
     public void AddMemberToKey(String key, String member) throws InvalidArgException {
-        // Validate items exist.
-        if (!itemRepository.ContainsKeys()) {
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldItemList, Constants.exceptionMessageItemsEmpty);
-        }
-        
         // Validate key and member.
-        if (!itemRepository.ContainsKey(key)) {
-            String errorMessage = String.format(Constants.exceptionMessageKeyDoesNotExist, key);
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldKey, errorMessage);
-        }
-        if (itemRepository.ContainsMember(key, member)) {
+        if (itemRepository.ContainsKey(key) && itemRepository.ContainsMember(key, member)) {
             String errorMessage = String.format(Constants.exceptionMessageMemberExists, member, key);
             throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldMember, errorMessage);
         }
@@ -40,30 +31,22 @@ public class ItemService {
 
     // Check if a key exists.
     public boolean ContainsKey(String key) throws InvalidArgException {
-        // Validate items exist.
-        if (!itemRepository.ContainsKeys()) {
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldItemList, Constants.exceptionMessageItemsEmpty);
-        }
-
         // Return check.
         return itemRepository.ContainsKey(key);
     }
 
     // Check if a member exists.
     public boolean MemberExists(String key, String member) throws InvalidArgException {
-        // Validate items exist.
-        if (!itemRepository.ContainsKeys()) {
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldItemList, Constants.exceptionMessageItemsEmpty);
+        boolean exists = false;
+        
+        try {
+            exists = itemRepository.ContainsMember(key, member);
+        } catch (InvalidArgException e) {
+            exists = false;
         }
-
-        // Validate key exists.
-        if (!itemRepository.ContainsKey(key)) {
-            String errorMessage = String.format(Constants.exceptionMessageKeyDoesNotExist, key);
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldKey, errorMessage);
-        }
-
+        
         // Return check.
-        return itemRepository.ContainsMember(key, member);
+        return exists;
     }
 
     // Get all items.
@@ -101,11 +84,6 @@ public class ItemService {
     
     // Get all members for a key.
     public List<String> GetAllMembersForKey(String key) throws InvalidArgException {
-        // Validate items exist.
-        if (!itemRepository.ContainsKeys()) {
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldItemList, Constants.exceptionMessageItemsEmpty);
-        }
-
         // Validate key exists.
         if (!itemRepository.ContainsKey(key)) {
             String errorMessage = String.format(Constants.exceptionMessageKeyDoesNotExist, key);
@@ -118,11 +96,6 @@ public class ItemService {
 
     // Remove all members from a key.
     public void RemoveAllMembersForKey(String key) throws InvalidArgException {
-        // Validate items exist.
-        if (!itemRepository.ContainsKeys()) {
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldItemList, Constants.exceptionMessageItemsEmpty);
-        }
-
         // Validate key exists.
         if (!itemRepository.ContainsKey(key)) {
             String errorMessage = String.format(Constants.exceptionMessageKeyDoesNotExist, key);
@@ -135,11 +108,6 @@ public class ItemService {
     
     // Remove member from a key.
     public void RemoveMemberFromKey(String key, String member) throws InvalidArgException {
-        // Validate items exist.
-        if (!itemRepository.ContainsKeys()) {
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldItemList, Constants.exceptionMessageItemsEmpty);
-        }
-        
         // Validate key and member.
         if (!itemRepository.ContainsKey(key)) {
             String errorMessage = String.format(Constants.exceptionMessageKeyDoesNotExist, key);

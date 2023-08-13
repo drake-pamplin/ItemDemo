@@ -38,7 +38,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass.set("code.controller.App")
+    mainClass.set("code.controller.ItemController")
 }
 
 tasks.named<Test>("test") {

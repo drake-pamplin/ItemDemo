@@ -19,5 +19,6 @@ public class HelpService {
         commandList += String.format(Constants.messageMemberExistsCommands, Constants.commandMemberExists, Constants.fieldKey, Constants.fieldMember) + "\n";
         commandList += String.format(Constants.messageAllMembersCommand, Constants.commandAllMembers) + "\n";
         commandList += String.format(Constants.messageItemsCommand, Constants.commandItems) + "\n";
+        commandList += String.format(Constants.messageQuitCommand, Constants.commandQuit);
     }
 }

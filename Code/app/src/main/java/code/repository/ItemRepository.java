@@ -1,6 +1,7 @@
 package code.repository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +20,9 @@ public class ItemRepository {
 
     public void AddMemberToKey(String key, String member) throws InvalidArgException {
         if (!ContainsKey(key)) {
-            String errorMessage = String.format(Constants.exceptionMessageKeyDoesNotExist, key);
-            throw new InvalidArgException(Constants.exceptionMessageGeneric, Constants.fieldKey, errorMessage);
+            Item item = new Item(key, new ArrayList<String>(Arrays.asList(member)));
+            dictionary.put(key, item);
+            return;
         }
 
         Item item = dictionary.get(key);
